@@ -2,7 +2,9 @@
 <h3 align="center">Environment</h3>
 <p align="center"><strong><code>@capacitor-community/environment</code></strong></p>
 <p align="center">
-  Capacitor plugin to manage the environment configurations.
+  Capacitor plugin to manage the environment configurations.<br>
+  This plugin takes advantage of the iOS schemes & Android flavors to provide a JSON configuration to the running web application.<br>
+  This allows better performance on switching environment or when building the native applications.
 </p>
 
 <p align="center">
@@ -32,31 +34,101 @@ npx cap sync
 
 ## Configuration
 
-TODO
+### Web
+
+An `environment.json` file must be available at the root of the served folder.
+
+### TypeScript
+
+To allow TypeScripy autocompletion, you must override the EnvironmentData interface in your app.
+
+Example:
+
+`environment.d.ts`
+```typescript
+import '@capacitor-community/environment';
+
+declare module '@capacitor-community/environment' {
+  /** My app environment data */
+  export interface EnvironmentData {
+    /** The environment name */
+    name: string;
+    /** The environment endpoint URL */
+    endpoint: string;
+  }
+}
+```
 
 ## Usage
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`init(...)`](#init)
+* [`get(...)`](#get)
+* [Interfaces](#interfaces)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### init(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+init(options: InitEnvironmentOptions) => Promise<void>
 ```
 
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+Initialize the Environment plugin.
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+The call to this method is optional.
+
+Only available on web.
+
+| Param         | Type                                                                      |
+| ------------- | ------------------------------------------------------------------------- |
+| **`options`** | <code><a href="#initenvironmentoptions">InitEnvironmentOptions</a></code> |
 
 --------------------
+
+
+### get(...)
+
+```typescript
+get(options?: GetEnvironmentOptions | undefined) => Promise<EnvironmentData>
+```
+
+Returns the environment configuration.
+
+| Param         | Type                                                                    |
+| ------------- | ----------------------------------------------------------------------- |
+| **`options`** | <code><a href="#getenvironmentoptions">GetEnvironmentOptions</a></code> |
+
+**Returns:** <code>Promise&lt;<a href="#environmentdata">EnvironmentData</a>&gt;</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### InitEnvironmentOptions
+
+| Prop          | Type                          | Description                                                                                                |
+| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **`version`** | <code>string \| number</code> | The version number of the app. Provide this parameter to avoid to set this parameter on each "get()" call. |
+
+
+#### EnvironmentData
+
+The environment data as a JSON object.
+
+To enable the autocompletion, this interface must be extended.
+
+
+#### GetEnvironmentOptions
+
+| Prop          | Type                          | Description                                                                                                                                                                                                    |
+| ------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`version`** | <code>string \| number</code> | The version number of the app. Only used on web. Allow to force the environment.json refresh when the file is cached by the browser. You can also call the "init()" method to avoid to specify this parameter. |
 
 </docgen-api>
