@@ -46,7 +46,23 @@ npx cap sync
 
 In the Android project, place the wanted `environment.json` file in the main assets folder and in the flavors assets folders:
 * `android/app/src/main/assets/environment.json` for the default configuration (usually the production configuration).
-* `android/app/src/<flavorName>/assets/environment.json` for the other declared environments.
+* `android/app/src/<flavorName>/assets/environment.json` for each other declared environments.
+
+### iOS
+
+In the Finder,create the following environment configurations:
+* `ios/App/App/environment/default/environment.json` for the default "App" target configuration (usually the production configuration).
+* `ios/App/App/environment/<configurationName>/environment.json` for each other environments.
+
+Open up the Capacitor application’s iOS project in Xcode by running `npx cap open ios`.<br>
+Right-click the **App** group (under the App target) and select **New Group** from the context menu. Name this new group **environment**.
+
+For each of the previously create `environment.json` files:
+* Drag&drop the file into the new created group **environment** in Xcode.
+* In the add to the project options (automatically displayed by Xcode):
+  * Uncheck the "Copy items if needed"
+  * Check only the target that corresponds to the environment file
+  * Press "Finish"
 
 ### Web
 
@@ -55,7 +71,7 @@ You must manage the switching of the environment by switching this file.
 
 ### TypeScript
 
-To allow TypeScripy autocompletion, you must override the EnvironmentData interface in your app.
+To allow TypeScript autocompletion, you must override the EnvironmentData interface in your app with your expected data.
 
 Example:
 

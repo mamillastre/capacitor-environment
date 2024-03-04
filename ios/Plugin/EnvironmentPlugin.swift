@@ -2,17 +2,18 @@ import Foundation
 import Capacitor
 
 /**
- * Please read the Capacitor iOS Plugin Development Guide
- * here: https://capacitorjs.com/docs/plugins/ios
+ * Capacitor plugin to manage the environment configurations
  */
 @objc(EnvironmentPlugin)
 public class EnvironmentPlugin: CAPPlugin {
     private let implementation = Environment()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    @objc func get(_ call: CAPPluginCall) {
+        do {
+            call.resolve(try implementation.get())
+        } catch let error as NSError {
+            print(error)
+            call.reject(error.localizedDescription, String(error.code), error);
+        }
     }
 }
