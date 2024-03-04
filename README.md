@@ -2,9 +2,7 @@
 <h3 align="center">Environment</h3>
 <p align="center"><strong><code>@capacitor-community/environment</code></strong></p>
 <p align="center">
-  Capacitor plugin to manage the environment configurations.<br>
-  This plugin takes advantage of the iOS schemes & Android flavors to provide a JSON configuration to the running web application.<br>
-  This allows better performance on switching environment or when building the native applications.
+  Capacitor plugin to manage the environment configurations.
 </p>
 
 <p align="center">
@@ -18,6 +16,16 @@
 <a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-0-orange?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
+
+## Description
+
+This plugin takes advantage of the iOS schemes & Android product flavors to provide a JSON configuration to the running web application.<br>
+This extra configuration improves your environment management if you followed the [Create Environment Specific Configuration guide](https://capacitorjs.com/docs/guides/environment-specific-configurations).
+
+The advantages of using this plugin instead of managing the environment inside the web application:
+* One web application build instead of one per environment
+* Better development experience in the native IDEs by only switching the scheme/flavor
+* On Android, build all the applications with one command (ex: gradlew bundleRelease) instead of one per environment
 
 ## Maintainers
 
@@ -34,9 +42,16 @@ npx cap sync
 
 ## Configuration
 
+### Android
+
+In the Android project, place the wanted `environment.json` file in the main assets folder and in the flavors assets folders:
+* `android/app/src/main/assets/environment.json` for the default configuration (usually the production configuration).
+* `android/app/src/<flavorName>/assets/environment.json` for the other declared environments.
+
 ### Web
 
-An `environment.json` file must be available at the root of the served folder.
+An `environment.json` file must be available at the root of the served folder.<br>
+You must manage the switching of the environment by switching this file.
 
 ### TypeScript
 
