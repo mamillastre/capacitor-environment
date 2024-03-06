@@ -6,6 +6,10 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "unpkg": "dist/plugin.js",
+  "bin": {
+    "capacitor-environment": "bin/index.js",
+    "capenv": "bin/index.js"
+  },
   "files": [
     "android/src/main/",
     "android/build.gradle",
@@ -46,11 +50,12 @@
   },
   "devDependencies": {
     "@capacitor/android": "^5.0.0",
+    "@capacitor/cli": "^5.7.1",
     "@capacitor/core": "^5.0.0",
     "@capacitor/docgen": "^0.0.18",
     "@capacitor/ios": "^5.0.0",
     "@ionic/eslint-config": "^0.3.0",
-    "@ionic/prettier-config": "^1.0.1",
+    "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^1.1.2",
     "eslint": "^7.11.0",
     "husky": "^9.0.11",
@@ -83,5 +88,9 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "kleur": "^4.1.5"
   }
 }

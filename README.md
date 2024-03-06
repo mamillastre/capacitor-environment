@@ -42,32 +42,72 @@ npx cap sync
 
 ## Configuration
 
-### Android
+This configuration guide conciders that you already followed the [Create Environment Specific Configuration guide](https://capacitorjs.com/docs/guides/environment-specific-configurations) and created the Android product flavors & the iOS schemes.
 
-In the Android project, place the wanted `environment.json` file in the main assets folder and in the flavors assets folders:
-* `android/app/src/main/assets/environment.json` for the default configuration (usually the production configuration).
-* `android/app/src/<flavorName>/assets/environment.json` for each other declared environments.
+### Capacitor
+
+Add your environment information in the Capacitor configuration of the plugin.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| **`environments`** | <code>{<br>&nbsp;&nbsp;default: EnvironmentPluginsConfigData,<br>&nbsp;&nbsp;[environmentName: string]: EnvironmentPluginsConfigData<br>}</code> | The environment configuration declarations.<br>The `default` configuration is mandatory (`main` Android product flavor & `App` iOS scheme)<br>You can add as many other environments as you want by using the Android product flavor as a key name. |
+
+#### EnvironmentPluginsConfigData
+
+| Prop          | Type                          | Description                                                                                                |
+| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **`path`** | <code>string</code> | The path of the environment configuration JSON file you have generated. |
+
+<br>
+
+Example in `capacitor.config.ts`:
+
+```ts
+/// <reference types="@capacitor-community/environment" />
+
+import { CapacitorConfig } from '@capacitor/cli';
+
+const config: CapacitorConfig = {
+  plugins: {
+    Environment: {
+      environments: {
+        default: { path: 'path/to/my/environment.production.json' },
+        otherEnvironmentName: { path: 'path/to/an/other/environment.json' }
+      }
+    }
+  },
+};
+
+export default config;
+```
+
+Add the environment configuration files copy to you **package.json** scripts:
+
+```json
+"scripts": {
+  "capacitor:copy:after": "npx capacitor-environment copy"
+}
+```
+
+Run:
+```bash
+npx cap copy
+```
 
 ### iOS
-
-In the Finder,create the following environment configurations:
-* `ios/App/App/environment/default/environment.json` for the default "App" target configuration (usually the production configuration).
-* `ios/App/App/environment/<configurationName>/environment.json` for each other environments.
 
 Open up the Capacitor application’s iOS project in Xcode by running `npx cap open ios`.<br>
 Right-click the **App** group (under the App target) and select **New Group** from the context menu. Name this new group **environment**.
 
-For each of the previously create `environment.json` files:
-* Drag&drop the file into the new created group **environment** in Xcode.
+In the Finder, open the `ios/App/App/environment` folder.<br>
+It contains all the copied configuration sorted into named folders.<br>
+For each of the `environment.json` files in this folder:
+* Drag & drop the file into the new created group **environment** in Xcode.
 * In the add to the project options (automatically displayed by Xcode):
   * Uncheck the "Copy items if needed"
-  * Check only the target that corresponds to the environment file
+  * Check **ONLY** the target that corresponds to the environment file
   * Press "Finish"
 
-### Web
-
-An `environment.json` file must be available at the root of the served folder.<br>
-You must manage the switching of the environment by switching this file.
 
 ### TypeScript
 
@@ -88,6 +128,24 @@ declare module '@capacitor-community/environment' {
     endpoint: string;
   }
 }
+```
+
+## Note for the Web
+
+An `environment.json` file must be available at the root your web application.<br>
+You must manage this file depending on the environment on your own.
+
+Example on an **Angular** app:<br>
+You must add the asset copy on the wanted Angular configurations
+
+```json
+"assets": [
+  {
+    "glob": "environment.json",
+    "input": "path/to/my/environment",
+    "output": "/"
+  }
+]
 ```
 
 ## Usage

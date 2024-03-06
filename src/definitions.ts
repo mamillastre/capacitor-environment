@@ -1,3 +1,47 @@
+/// <reference types="@capacitor/cli" />
+
+declare module '@capacitor/cli' {
+  export interface PluginsConfig {
+    /**
+     * Capacitor configuration of the environment plugin
+     */
+    Environment?: {
+      /**
+       * The environments declarations
+       */
+      environments: {
+        /**
+         * The default environment configuration. Usually the production configuration.
+         * Correspond to the **main** flavor on Android an the **App** target on iOS. 
+         *
+         * @since 1.0.0
+         */
+        default: EnvironmentPluginsConfigData,
+        /**
+         * The other environment configuration.
+         * Must be named like the used Android product flavor names.
+         *
+         * @since 1.0.0
+         */
+        [environmentName: string]: EnvironmentPluginsConfigData
+      };
+    };
+  }
+}
+
+/**
+ * The environement declaration data in the Capacitor configuration
+ */
+export interface EnvironmentPluginsConfigData {
+  /**
+   * The relative path of the environment configuration file from the root of the project
+   *
+   * @since 1.0.0
+   * @example "enrironments/environment.production.json"
+   */
+  path: string;
+}
+
 export interface EnvironmentPlugin {
 
   /**
