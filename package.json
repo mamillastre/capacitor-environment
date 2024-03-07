@@ -1,5 +1,5 @@
 {
-  "name": "@capacitor-community/environment",
+  "name": "@mamillastre/capacitor-environment",
   "version": "0.0.1",
   "description": "Capacitor plugin to manage the environment configurations",
   "main": "dist/plugin.cjs.js",
@@ -16,16 +16,16 @@
     "bin/",
     "dist/",
     "ios/Plugin/",
-    "CapacitorCommunityEnvironment.podspec"
+    "MamillastreCapacitorEnvironment.podspec"
   ],
   "author": "mamillastre",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/capacitor-community/environment.git"
+    "url": "git+https://github.com/mamillastre/environment.git"
   },
   "bugs": {
-    "url": "https://github.com/capacitor-community/environment/issues"
+    "url": "https://github.com/mamillastre/environment/issues"
   },
   "keywords": [
     "capacitor",

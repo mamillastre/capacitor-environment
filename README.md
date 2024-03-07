@@ -1,17 +1,17 @@
 <p align="center"><br><img src="https://user-images.githubusercontent.com/236501/85893648-1c92e880-b7a8-11ea-926d-95355b8175c7.png" width="128" height="128" /></p>
 <h3 align="center">Environment</h3>
-<p align="center"><strong><code>@capacitor-community/environment</code></strong></p>
+<p align="center"><strong><code>@mamillastre/capacitor-environment</code></strong></p>
 <p align="center">
   Capacitor plugin to manage the environment configurations.
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/maintenance/yes/2024?style=flat-square" />
-  <a href="https://github.com/capacitor-community/environment/actions?query=workflow%3A%22CI%22"><img src="https://img.shields.io/github/workflow/status/capacitor-community/environment/CI?style=flat-square" /></a>
-  <a href="https://www.npmjs.com/package/@capacitor-community/environment"><img src="https://img.shields.io/npm/l/@capacitor-community/environment?style=flat-square" /></a>
+  <a href="https://github.com/mamillastre/environment/actions?query=workflow%3A%22CI%22"><img src="https://img.shields.io/github/workflow/status/mamillastre/environment/CI?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@mamillastre/capacitor-environment"><img src="https://img.shields.io/npm/l/@mamillastre/capacitor-environment?style=flat-square" /></a>
 <br>
-  <a href="https://www.npmjs.com/package/@capacitor-community/environment"><img src="https://img.shields.io/npm/dw/@capacitor-community/environment?style=flat-square" /></a>
-  <a href="https://www.npmjs.com/package/@capacitor-community/environment"><img src="https://img.shields.io/npm/v/@capacitor-community/environment?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@mamillastre/capacitor-environment"><img src="https://img.shields.io/npm/dw/@mamillastre/capacitor-environment?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@mamillastre/capacitor-environment"><img src="https://img.shields.io/npm/v/@mamillastre/capacitor-environment?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-0-orange?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -36,7 +36,7 @@ The advantages of using this plugin instead of managing the environment inside t
 ## Installation
 
 ```bash
-npm install @capacitor-community/environment
+npm install @mamillastre/capacitor-environment
 npx cap sync
 ```
 
@@ -70,7 +70,7 @@ Add your environment information in the Capacitor configuration of the plugin.
 Example in `capacitor.config.ts`:
 
 ```ts
-/// <reference types="@capacitor-community/environment" />
+/// <reference types="@mamillastre/capacitor-environment" />
 
 import { CapacitorConfig } from '@capacitor/cli';
 
@@ -124,9 +124,9 @@ Example:
 
 `environment.d.ts`
 ```typescript
-import '@capacitor-community/environment';
+import '@mamillastre/capacitor-environment';
 
-declare module '@capacitor-community/environment' {
+declare module '@mamillastre/capacitor-environment' {
   /** My app environment data */
   export interface EnvironmentData {
     /** The environment name */
