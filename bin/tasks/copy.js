@@ -1,9 +1,12 @@
 #!/usr/bin/env node
+/* eslint-env node */
+'use strict';
 
-const { getCapacitorParams, getAndroidPath, getIosPath } = require('../utils');
-const { resolve, dirname } = require('path');
 const { rmSync, copyFileSync, existsSync, mkdirSync } = require('fs');
+const { resolve, dirname } = require('path');
+
 const c = require('../colors');
+const { getCapacitorParams, getAndroidPath, getIosPath } = require('../utils');
 
 exports.copyCommand = async function () {
 

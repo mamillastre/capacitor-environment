@@ -1,5 +1,6 @@
-
-const { resolve } = require('path');
+#!/usr/bin/env node
+/* eslint-env node */
+'use strict';
 
 exports.getCapacitorParams = function () {
 
@@ -8,7 +9,7 @@ exports.getCapacitorParams = function () {
   let config;
   try {
     config = JSON.parse(process.env.CAPACITOR_CONFIG);
-  } catch (e) { }
+  } catch (e) { /* The config stay undefined */ }
 
   return {
     platform,

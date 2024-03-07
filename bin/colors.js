@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+/* eslint-env node */
+'use strict';
 
 const kleur = require('kleur');
 
