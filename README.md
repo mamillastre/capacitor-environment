@@ -50,13 +50,20 @@ Add your environment information in the Capacitor configuration of the plugin.
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
-| **`environments`** | <code>{<br>&nbsp;&nbsp;default: EnvironmentPluginsConfigData,<br>&nbsp;&nbsp;[environmentName: string]: EnvironmentPluginsConfigData<br>}</code> | The environment configuration declarations.<br>The `default` configuration is mandatory (`main` Android product flavor & `App` iOS scheme)<br>You can add as many other environments as you want by using the Android product flavor as a key name. |
+| **`environments`** | <code><a href="#environmentconfigdeclarations">EnvironmentConfigDeclarations</a></code> | The environment configuration declarations.<br>List all project available environments. |
 
-#### EnvironmentPluginsConfigData
+#### EnvironmentConfigDeclarations
 
 | Prop          | Type                          | Description                                                                                                |
 | ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **`path`** | <code>string</code> | The path of the environment configuration JSON file you have generated. |
+| **`default`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The mandatory default environment configuration. Usually the production configuration.<br>Correspond to the **main** flavor on Android an the **App** target on iOS.  |
+| **`[environmentName: string]`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The other environment configuration.<br>You can add as many other environments as you want.<br>Must be named like the used Android product flavor names. |
+
+#### EnvironmentConfigInfo
+
+| Prop          | Type                          | Description                                                                                                |
+| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **`path`** | <code>string</code> | The relative path of your JSON environment configuration file from the root of the project. |
 
 <br>
 
