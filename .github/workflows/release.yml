@@ -1,0 +1,84 @@
+name: Release
+
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+concurrency: release
+
+env:
+  NODE_VERSION: 20
+  JAVA_VERSION: 17
+
+jobs:
+  verify:
+    name: Verify
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Set up Java ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: ${{ env.JAVA_VERSION }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Verify script
+        run: npm run verify
+
+  lint:
+    name: Lint
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run Lint script
+        run: npm run lint
+
+  release:
+    name: Release
+    needs: [verify, lint]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      # Temporary script to force npm to 10.5.0 when using Node 20. The 10.2 version has a bug when auditing signatures
+      - name: Upgrade npm to 10.5.0
+        if: env.NODE_VERSION == 20
+        run: npm install -g npm@10.5.0
+      - name: Install dependencies
+        run: npm ci
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release

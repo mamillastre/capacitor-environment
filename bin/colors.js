@@ -10,5 +10,5 @@ module.exports = {
   input: kleur.cyan,
   success: kleur.green,
   failure: kleur.red,
-  ancillary: kleur.cyan
-}
+  ancillary: kleur.cyan,
+};

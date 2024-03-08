@@ -2,13 +2,11 @@ package com.capacitorjs.community.environment;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class Environment {
 

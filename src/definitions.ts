@@ -10,8 +10,8 @@ declare module '@capacitor/cli' {
        * The environment configuration declarations.
        * List all project available environments.
        */
-      environments: EnvironmentConfigDeclarations
-    }
+      environments: EnvironmentConfigDeclarations;
+    };
   }
 }
 
@@ -21,7 +21,7 @@ declare module '@capacitor/cli' {
 export interface EnvironmentConfigDeclarations {
   /**
    * The mandatory default environment configuration. Usually the production configuration.
-   * Correspond to the **main** flavor on Android an the **App** target on iOS. 
+   * Correspond to the **main** flavor on Android an the **App** target on iOS.
    *
    * @since 1.0.0
    */
@@ -50,12 +50,11 @@ export interface EnvironmentConfigInfo {
 }
 
 export interface EnvironmentPlugin {
-
   /**
    * Initialize the Environment plugin.
-   * 
+   *
    * The call to this method is optional.
-   * 
+   *
    * Only available on web.
    * @usage
    * ```typescript
@@ -63,7 +62,6 @@ export interface EnvironmentPlugin {
    * ```
    */
   init(options: InitEnvironmentOptions): Promise<void>;
-
   /**
    * Returns the environment configuration.
    * @usage
@@ -78,40 +76,35 @@ export interface EnvironmentPlugin {
 export interface InitEnvironmentOptions {
   /**
    * The version number of the app.
-   * 
+   *
    * Provide this parameter to avoid to set this parameter on each "get()" call.
    */
-  version: string | number
+  version: string | number;
 }
 
 export interface GetEnvironmentOptions {
   /**
    * The version number of the app.
-   * 
+   *
    * Only used on web.
-   * 
+   *
    * Allow to force the environment.json refresh when the file is cached by the browser.
-   * 
+   *
    * You can also call the "init()" method to avoid to specify this parameter.
    */
-  version?: string | number
+  version?: string | number;
 }
 
-/** 
+/**
  * The environment data as a JSON object.
- * 
+ *
  * To enable the autocompletion, this interface must be extended.
  */
 export interface EnvironmentData {
   [x: string]: JSONValue;
-};
+}
 
-type JSONValue =
-  | string
-  | number
-  | boolean
-  | JSONObject
-  | JSONValue[];
+type JSONValue = string | number | boolean | JSONObject | JSONValue[];
 
 interface JSONObject {
   [x: string]: JSONValue;

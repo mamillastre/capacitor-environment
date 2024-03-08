@@ -2,9 +2,7 @@ import { WebPlugin } from '@capacitor/core';
 
 import type { EnvironmentData, EnvironmentPlugin, GetEnvironmentOptions, InitEnvironmentOptions } from './definitions';
 
-
 export class EnvironmentWeb extends WebPlugin implements EnvironmentPlugin {
-
   /** The environment request promise. To only request it once */
   private static envPromise: Promise<EnvironmentData> | undefined;
 
@@ -18,16 +16,17 @@ export class EnvironmentWeb extends WebPlugin implements EnvironmentPlugin {
   }
 
   async get(options?: GetEnvironmentOptions): Promise<EnvironmentData> {
-
     if (!EnvironmentWeb.envPromise) {
-      EnvironmentWeb.envPromise = fetch('environment.json' + ((options?.version ?? EnvironmentWeb.version) ? `?v=${options?.version ?? EnvironmentWeb.version}` : ''))
-        .then(res => {
-          if (res.status === 200) {
-            return res.json();
-          }
-          EnvironmentWeb.envPromise = undefined;
-          throw new Error('Unable to load the environment.json file');
-        });
+      EnvironmentWeb.envPromise = fetch(
+        'environment.json' +
+          (options?.version ?? EnvironmentWeb.version ? `?v=${options?.version ?? EnvironmentWeb.version}` : ''),
+      ).then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        EnvironmentWeb.envPromise = undefined;
+        throw new Error('Unable to load the environment.json file');
+      });
     }
 
     return EnvironmentWeb.envPromise;

@@ -10,7 +10,6 @@ program
   .action(async () => {
     const { copyCommand } = await require('./tasks/copy');
     await copyCommand();
-
   });
 
 program.parse(process.argv);

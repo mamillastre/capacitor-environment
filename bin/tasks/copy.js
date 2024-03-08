@@ -9,11 +9,14 @@ const c = require('../colors');
 const { getCapacitorParams, getAndroidPath, getIosPath } = require('../utils');
 
 exports.copyCommand = async function () {
-
   const { platform, appRootDir, config } = getCapacitorParams();
 
   if (!platform || !appRootDir || !config) {
-    console.error(c.failure('Error: this command must be executed in the Capacitor copy context. Add this script to your package.json => "capacitor:copy:after": "npx capacitor-environment copy"'));
+    console.error(
+      c.failure(
+        'Error: this command must be executed in the Capacitor copy context. Add this script to your package.json => "capacitor:copy:after": "npx capacitor-environment copy"',
+      ),
+    );
     return;
   }
 
@@ -22,7 +25,7 @@ exports.copyCommand = async function () {
 
   // Remove the unused environment in the web assets
   rmWebEnvFile(platform, appRootDir, config);
-}
+};
 
 /**
  * Launch the copy of all environment configuration files into the wanted platform
@@ -35,14 +38,14 @@ function copy(platform, appRootDir, config) {
       console.error(c.failure('Error: the "default" environment is not available in the Capacitor config file'));
     }
 
-    Object.keys(envConf ?? {}).forEach(envKey => {
+    Object.keys(envConf ?? {}).forEach((envKey) => {
       if (envConf[envKey]?.path) {
         copyNativeEnvFile(
           appRootDir,
           envConf[envKey].path,
-          platform === 'android' ?
-            `${getAndroidPath(config)}/app/src/${envKey === 'default' ? 'main' : envKey}/assets/environment.json` :
-            `${getIosPath(config)}/App/App/environment/${envKey}/environment.json`
+          platform === 'android'
+            ? `${getAndroidPath(config)}/app/src/${envKey === 'default' ? 'main' : envKey}/assets/environment.json`
+            : `${getIosPath(config)}/App/App/environment/${envKey}/environment.json`,
         );
       }
     });
@@ -54,7 +57,9 @@ function copy(platform, appRootDir, config) {
  */
 function copyNativeEnvFile(appRootDir, originFile, destFile) {
   if (originFile && destFile) {
-    console.info(`${c.success('✔')} Copying environment configuration from ${c.strong(originFile)} to ${c.strong(destFile)}`);
+    console.info(
+      `${c.success('✔')} Copying environment configuration from ${c.strong(originFile)} to ${c.strong(destFile)}`,
+    );
 
     const destFolder = dirname(destFile);
 
@@ -67,14 +72,15 @@ function copyNativeEnvFile(appRootDir, originFile, destFile) {
   }
 }
 
-/** 
+/**
  * Remove the environment file in the native web assets (unused in native platforms)
  */
 function rmWebEnvFile(platform, appRootDir, config) {
   if (platform === 'android' || platform === 'ios') {
-    const assetsPath = platform === 'android' ?
-      `${getAndroidPath(config)}/app/src/main/assets/public` :
-      `${getIosPath(config)}/App/App/public`;
+    const assetsPath =
+      platform === 'android'
+        ? `${getAndroidPath(config)}/app/src/main/assets/public`
+        : `${getIosPath(config)}/App/App/public`;
     const fileFullPath = resolve(appRootDir, assetsPath, 'environment.json');
 
     if (existsSync(fileFullPath)) {

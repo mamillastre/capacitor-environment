@@ -13,7 +13,7 @@ public class EnvironmentPlugin: CAPPlugin {
             call.resolve(try implementation.get())
         } catch let error as NSError {
             print(error)
-            call.reject(error.localizedDescription, String(error.code), error);
+            call.reject(error.localizedDescription, String(error.code), error)
         }
     }
 }
