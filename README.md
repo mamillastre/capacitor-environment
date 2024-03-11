@@ -17,6 +17,10 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
+## Capacitor community
+
+You can support this plugin to integrate the [Capacitor Community](https://github.com/capacitor-community) by adding feedbacks or a 👍 reaction to **[this proposal](https://github.com/capacitor-community/proposals/issues/213)**.
+
 ## Description
 
 This plugin takes advantage of the iOS schemes & Android product flavors to provide a JSON configuration to the running web application.<br>
