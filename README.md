@@ -159,33 +159,14 @@ You must add the asset copy on the wanted Angular configurations
 
 <docgen-index>
 
-* [`init(...)`](#init)
 * [`get(...)`](#get)
+* [`setVersion(...)`](#setversion)
 * [Interfaces](#interfaces)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
-
-### init(...)
-
-```typescript
-init(options: InitEnvironmentOptions) => Promise<void>
-```
-
-Initialize the Environment plugin.
-
-The call to this method is optional.
-
-Only available on web.
-
-| Param         | Type                                                                      |
-| ------------- | ------------------------------------------------------------------------- |
-| **`options`** | <code><a href="#initenvironmentoptions">InitEnvironmentOptions</a></code> |
-
---------------------
-
 
 ### get(...)
 
@@ -204,14 +185,26 @@ Returns the environment configuration.
 --------------------
 
 
+### setVersion(...)
+
+```typescript
+setVersion(options: SetVersionOptions) => Promise<void>
+```
+
+Set the app version.
+
+Only available on web.
+
+Allow to force the environment.json refresh when the file is cached by the browser.
+
+| Param         | Type                                                            |
+| ------------- | --------------------------------------------------------------- |
+| **`options`** | <code><a href="#setversionoptions">SetVersionOptions</a></code> |
+
+--------------------
+
+
 ### Interfaces
-
-
-#### InitEnvironmentOptions
-
-| Prop          | Type                          | Description                                                                                                |
-| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **`version`** | <code>string \| number</code> | The version number of the app. Provide this parameter to avoid to set this parameter on each "get()" call. |
 
 
 #### EnvironmentData
@@ -223,8 +216,15 @@ To enable the autocompletion, this interface must be extended.
 
 #### GetEnvironmentOptions
 
-| Prop          | Type                          | Description                                                                                                                                                                                                    |
-| ------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`version`** | <code>string \| number</code> | The version number of the app. Only used on web. Allow to force the environment.json refresh when the file is cached by the browser. You can also call the "init()" method to avoid to specify this parameter. |
+| Prop          | Type                          | Description                                                                                                                                                                                                                       |
+| ------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`version`** | <code>string \| number</code> | The version number of the app. Only used on web. Allow to force the environment.json refresh when the file is cached by the browser. You can also call the "setVersion()" method to avoid to specify this parameter on each call. |
+
+
+#### SetVersionOptions
+
+| Prop          | Type                          | Description                                                                                                |
+| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| **`version`** | <code>string \| number</code> | The version number of the app. Provide this parameter to avoid to set this parameter on each "get()" call. |
 
 </docgen-api>

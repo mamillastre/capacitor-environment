@@ -1,6 +1,6 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { EnvironmentData, EnvironmentPlugin, GetEnvironmentOptions, InitEnvironmentOptions } from './definitions';
+import type { EnvironmentData, EnvironmentPlugin, GetEnvironmentOptions, SetVersionOptions } from './definitions';
 
 export class EnvironmentWeb extends WebPlugin implements EnvironmentPlugin {
   /** The environment request promise. To only request it once */
@@ -8,12 +8,6 @@ export class EnvironmentWeb extends WebPlugin implements EnvironmentPlugin {
 
   /** The application version number saved during the plugin init */
   private static version?: string | number;
-
-  async init(options: InitEnvironmentOptions): Promise<void> {
-    if (options.version) {
-      EnvironmentWeb.version = options.version;
-    }
-  }
 
   async get(options?: GetEnvironmentOptions): Promise<EnvironmentData> {
     if (!EnvironmentWeb.envPromise) {
@@ -30,5 +24,11 @@ export class EnvironmentWeb extends WebPlugin implements EnvironmentPlugin {
     }
 
     return EnvironmentWeb.envPromise;
+  }
+
+  async setVersion(options: SetVersionOptions): Promise<void> {
+    if (options?.version) {
+      EnvironmentWeb.version = options.version;
+    }
   }
 }
