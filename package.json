@@ -22,10 +22,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mamillastre/environment.git"
+    "url": "git+https://github.com/mamillastre/capacitor-environment.git"
   },
   "bugs": {
-    "url": "https://github.com/mamillastre/environment/issues"
+    "url": "https://github.com/mamillastre/capacitor-environment/issues"
   },
   "keywords": [
     "capacitor",

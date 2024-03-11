@@ -7,7 +7,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/maintenance/yes/2024?style=flat-square" />
-  <a href="https://github.com/mamillastre/environment/actions?query=workflow%3A%22CI%22"><img src="https://img.shields.io/github/workflow/status/mamillastre/environment/CI?style=flat-square" /></a>
+  <a href="https://github.com/mamillastre/capacitor-environment/actions?query=workflow%3A%22Release%22"><img src="https://img.shields.io/github/actions/workflow/status/mamillastre/capacitor-environment/release.yml?branch=main&style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@mamillastre/capacitor-environment"><img src="https://img.shields.io/npm/l/@mamillastre/capacitor-environment?style=flat-square" /></a>
 <br>
   <a href="https://www.npmjs.com/package/@mamillastre/capacitor-environment"><img src="https://img.shields.io/npm/dw/@mamillastre/capacitor-environment?style=flat-square" /></a>
@@ -29,9 +29,9 @@ The advantages of using this plugin instead of managing the environment inside t
 
 ## Maintainers
 
-| Maintainer | GitHub | Social |
+| Maintainer        | GitHub                                        | Social |
 | -----------| -------| -------|
-| Maxime Amillastré | [mamillastre](https://github.com/mamillastre) |  |
+| Maxime Amillastré | [mamillastre](https://github.com/mamillastre) |        |
 
 ## Installation
 
@@ -48,20 +48,20 @@ This configuration guide conciders that you already followed the [Create Environ
 
 Add your environment information in the Capacitor configuration of the plugin.
 
-| Prop | Type | Description |
+| Prop               | Type                                                                                    | Description                                                                             |
 | ---- | ---- | ----------- |
 | **`environments`** | <code><a href="#environmentconfigdeclarations">EnvironmentConfigDeclarations</a></code> | The environment configuration declarations.<br>List all project available environments. |
 
 #### EnvironmentConfigDeclarations
 
-| Prop          | Type                          | Description                                                                                                |
+| Prop                            | Type                                                                    | Description                                                                                                                                                          |
 | ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **`default`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The mandatory default environment configuration. Usually the production configuration.<br>Correspond to the **main** flavor on Android an the **App** target on iOS.  |
-| **`[environmentName: string]`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The other environment configuration.<br>You can add as many other environments as you want.<br>Must be named like the used Android product flavor names. |
+| **`default`**                   | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The mandatory default environment configuration. Usually the production configuration.<br>Correspond to the **main** flavor on Android an the **App** target on iOS. |
+| **`[environmentName: string]`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The other environment configuration.<br>You can add as many other environments as you want.<br>Must be named like the used Android product flavor names.             |
 
 #### EnvironmentConfigInfo
 
-| Prop          | Type                          | Description                                                                                                |
+| Prop       | Type                | Description                                                                                 |
 | ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | **`path`** | <code>string</code> | The relative path of your JSON environment configuration file from the root of the project. |
 
