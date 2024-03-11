@@ -23,14 +23,15 @@ This plugin takes advantage of the iOS schemes & Android product flavors to prov
 This extra configuration improves your environment management if you followed the [Create Environment Specific Configuration guide](https://capacitorjs.com/docs/guides/environment-specific-configurations).
 
 The advantages of using this plugin instead of managing the environment inside the web application:
-* One web application build instead of one per environment
-* Better development experience in the native IDEs by only switching the scheme/flavor
-* On Android, build all the applications with one command (ex: gradlew bundleRelease) instead of one per environment
+
+- One web application build instead of one per environment
+- Better development experience in the native IDEs by only switching the scheme/flavor
+- On Android, build all the applications with one command (ex: gradlew bundleRelease) instead of one per environment
 
 ## Maintainers
 
 | Maintainer        | GitHub                                        | Social |
-| -----------| -------| -------|
+| ----------------- | --------------------------------------------- | ------ |
 | Maxime Amillastré | [mamillastre](https://github.com/mamillastre) |        |
 
 ## Installation
@@ -49,20 +50,20 @@ This configuration guide conciders that you already followed the [Create Environ
 Add your environment information in the Capacitor configuration of the plugin.
 
 | Prop               | Type                                                                                    | Description                                                                             |
-| ---- | ---- | ----------- |
+| ------------------ | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | **`environments`** | <code><a href="#environmentconfigdeclarations">EnvironmentConfigDeclarations</a></code> | The environment configuration declarations.<br>List all project available environments. |
 
 #### EnvironmentConfigDeclarations
 
 | Prop                            | Type                                                                    | Description                                                                                                                                                          |
-| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| ------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`default`**                   | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The mandatory default environment configuration. Usually the production configuration.<br>Correspond to the **main** flavor on Android an the **App** target on iOS. |
 | **`[environmentName: string]`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The other environment configuration.<br>You can add as many other environments as you want.<br>Must be named like the used Android product flavor names.             |
 
 #### EnvironmentConfigInfo
 
 | Prop       | Type                | Description                                                                                 |
-| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| ---------- | ------------------- | ------------------------------------------------------------------------------------------- |
 | **`path`** | <code>string</code> | The relative path of your JSON environment configuration file from the root of the project. |
 
 <br>
@@ -79,9 +80,9 @@ const config: CapacitorConfig = {
     Environment: {
       environments: {
         default: { path: 'path/to/my/environment.production.json' },
-        otherEnvironmentName: { path: 'path/to/an/other/environment.json' }
-      }
-    }
+        otherEnvironmentName: { path: 'path/to/an/other/environment.json' },
+      },
+    },
   },
 };
 
@@ -97,6 +98,7 @@ Add the environment configuration files copy to you **package.json** scripts:
 ```
 
 Run:
+
 ```bash
 npx cap copy
 ```
@@ -109,12 +111,12 @@ Right-click the **App** group (under the App target) and select **New Group** fr
 In the Finder, open the `ios/App/App/environment` folder.<br>
 It contains all the copied configuration sorted into named folders.<br>
 For each of the `environment.json` files in this folder:
-* Drag & drop the file into the new created group **environment** in Xcode.
-* In the add to the project options (automatically displayed by Xcode):
-  * Uncheck the "Copy items if needed"
-  * Check **ONLY** the target that corresponds to the environment file
-  * Press "Finish"
 
+- Drag & drop the file into the new created group **environment** in Xcode.
+- In the add to the project options (automatically displayed by Xcode):
+  - Uncheck the "Copy items if needed"
+  - Check **ONLY** the target that corresponds to the environment file
+  - Press "Finish"
 
 ### TypeScript
 
@@ -123,6 +125,7 @@ To allow TypeScript autocompletion, you must override the EnvironmentData interf
 Example:
 
 `environment.d.ts`
+
 ```typescript
 import '@mamillastre/capacitor-environment';
 
@@ -155,7 +158,25 @@ You must add the asset copy on the wanted Angular configurations
 ]
 ```
 
-## Usage
+## Example
+
+```typescript
+import { Environment } from '@mamillastre/capacitor-environment';
+
+const printEnvironmentData = async () => {
+  // Setting the environment version may be optional depending the cache
+  // configuration you applied to the 'environment.json' file
+  if (Capacitor.getPlatform() === 'web') {
+    await Environment.setVersion({ version: '1.0.0' });
+  }
+
+  // Get the environment data
+  const env = await Environment.get();
+  console.log('Environment data:', env);
+};
+```
+
+## API
 
 <docgen-index>
 
