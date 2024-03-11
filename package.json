@@ -1,7 +1,7 @@
 {
   "name": "@mamillastre/capacitor-environment",
   "version": "0.0.1",
-  "description": "Capacitor plugin to manage the environment configurations",
+  "description": "Capacitor plugin to get JSON based environment specific data",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -30,8 +30,13 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native",
-    "environment"
+    "environment",
+    "configuration",
+    "javascript",
+    "typescript",
+    "android",
+    "ios",
+    "cross-platform"
   ],
   "publishConfig": {
     "provenance": true

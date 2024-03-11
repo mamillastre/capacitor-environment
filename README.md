@@ -2,7 +2,7 @@
 <h3 align="center">Environment</h3>
 <p align="center"><strong><code>@mamillastre/capacitor-environment</code></strong></p>
 <p align="center">
-  Capacitor plugin to manage the environment configurations.
+  Capacitor plugin to get JSON based environment specific data
 </p>
 
 <p align="center">
