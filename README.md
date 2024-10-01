@@ -51,26 +51,7 @@ This configuration guide conciders that you already followed the [Create Environ
 
 ### Capacitor
 
-Add your environment information in the Capacitor configuration of the plugin.
-
-| Prop               | Type                                                                                    | Description                                                                             |
-| ------------------ | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| **`environments`** | <code><a href="#environmentconfigdeclarations">EnvironmentConfigDeclarations</a></code> | The environment configuration declarations.<br>List all project available environments. |
-
-#### EnvironmentConfigDeclarations
-
-| Prop                            | Type                                                                    | Description                                                                                                                                                          |
-| ------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`default`**                   | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The mandatory default environment configuration. Usually the production configuration.<br>Correspond to the **main** flavor on Android an the **App** target on iOS. |
-| **`[environmentName: string]`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The other environment configuration.<br>You can add as many other environments as you want.<br>Must be named like the used Android product flavor names.             |
-
-#### EnvironmentConfigInfo
-
-| Prop       | Type                | Description                                                                                 |
-| ---------- | ------------------- | ------------------------------------------------------------------------------------------- |
-| **`path`** | <code>string</code> | The relative path of your JSON environment configuration file from the root of the project. |
-
-<br>
+Add your environment information in the Capacitor plugin configuration<a href="#capacitorpluginconfiguration">Capacitor plugin configuration</a>.
 
 Example in `capacitor.config.ts`:
 
@@ -93,13 +74,16 @@ const config: CapacitorConfig = {
 export default config;
 ```
 
-Add the environment configuration files copy to you **package.json** scripts:
-
-```json
-"scripts": {
-  "capacitor:copy:after": "npx capacitor-environment copy"
-}
-```
+> [!NOTE]
+> On project running **Capacitor < 6.1**, add this Capacitor hook, in your **package.json** scripts. It copy the environment configuration JSON files in the native platforms.
+> This hook is managed by the plugin on Capacitor 6.1 and above.
+>
+> ```json
+> "scripts": {
+>  ...,
+>  "capacitor:copy:after": "npx capacitor-environment copy"
+> }
+> ```
 
 Run:
 
@@ -253,3 +237,22 @@ To enable the autocompletion, this interface must be extended.
 | **`version`** | <code>string \| number</code> | The version number of the app. Provide this parameter to avoid to set this parameter on each "get()" call. |
 
 </docgen-api>
+
+#### CapacitorPluginConfiguration
+
+| Prop               | Type                                                                                    | Description                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| **`environments`** | <code><a href="#environmentconfigdeclarations">EnvironmentConfigDeclarations</a></code> | The environment configuration declarations.<br>List all project available environments. |
+
+#### EnvironmentConfigDeclarations
+
+| Prop                            | Type                                                                    | Description                                                                                                                                                          |
+| ------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`default`**                   | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The mandatory default environment configuration. Usually the production configuration.<br>Correspond to the **main** flavor on Android an the **App** target on iOS. |
+| **`[environmentName: string]`** | <code><a href="#environmentconfiginfo">EnvironmentConfigInfo</a></code> | The other environment configuration.<br>You can add as many other environments as you want.<br>Must be named like the used Android product flavor names.             |
+
+#### EnvironmentConfigInfo
+
+| Prop       | Type                | Description                                                                                 |
+| ---------- | ------------------- | ------------------------------------------------------------------------------------------- |
+| **`path`** | <code>string</code> | The relative path of your JSON environment configuration file from the root of the project. |
