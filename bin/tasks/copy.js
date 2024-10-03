@@ -14,10 +14,10 @@ exports.copyCommand = async function () {
   if (!platform || !appRootDir || !config) {
     console.error(
       c.failure(
-        'Error: this command must be executed in the Capacitor copy context. Add this script to your package.json => "capacitor:copy:after": "npx capacitor-environment copy"',
+        '\rError: this command must be executed in the Capacitor copy context. Add this script to your package.json => "capacitor:copy:after": "npx capacitor-environment copy"',
       ),
     );
-    return;
+    process.exit(1);
   }
 
   // Copy the environment in the navite platform
@@ -35,7 +35,11 @@ function copy(platform, appRootDir, config) {
     const envConf = config?.plugins?.Environment?.environments;
 
     if (!envConf?.default?.path) {
-      console.error(c.failure('Error: the "default" environment is not available in the Capacitor config file'));
+      console.warn(
+        c.warning(
+          '\rWarning: the "default" environment is not provided for the Environment plugin in the Capacitor config file',
+        ),
+      );
     }
 
     Object.keys(envConf ?? {}).forEach((envKey) => {
@@ -58,17 +62,25 @@ function copy(platform, appRootDir, config) {
 function copyNativeEnvFile(appRootDir, originFile, destFile) {
   if (originFile && destFile) {
     console.info(
-      `${c.success('✔')} Copying environment configuration from ${c.strong(originFile)} to ${c.strong(destFile)}`,
+      `\r${c.success('✔')} Copying environment configuration from ${c.strong(originFile)} to ${c.strong(destFile)}`,
     );
 
-    const destFolder = dirname(destFile);
+    const originPath = resolve(appRootDir, originFile);
+    const destPath = resolve(appRootDir, destFile);
+
+    // Check the origin file
+    if (!existsSync(originPath)) {
+      console.error(c.failure(`\rError: The Capacitor environment file "${originFile}" does not exist."`));
+      process.exit(9);
+    }
 
     // Create the folder if not exists
+    const destFolder = dirname(destPath);
     if (!existsSync(destFolder)) {
       mkdirSync(destFolder, { recursive: true });
     }
 
-    copyFileSync(resolve(appRootDir, originFile), resolve(appRootDir, destFile));
+    copyFileSync(originPath, destPath);
   }
 }
 
@@ -84,7 +96,7 @@ function rmWebEnvFile(platform, appRootDir, config) {
     const fileFullPath = resolve(appRootDir, assetsPath, 'environment.json');
 
     if (existsSync(fileFullPath)) {
-      console.info(`${c.success('✔')} Removing unused ${c.strong('environment.json')} from ${c.strong(assetsPath)}`);
+      console.info(`\r${c.success('✔')} Removing unused ${c.strong('environment.json')} from ${c.strong(assetsPath)}`);
       rmSync(fileFullPath);
     }
   }

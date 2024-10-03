@@ -9,6 +9,7 @@ module.exports = {
   weak: kleur.dim,
   input: kleur.cyan,
   success: kleur.green,
+  warning: kleur.yellow,
   failure: kleur.red,
   ancillary: kleur.cyan,
 };
