@@ -51,7 +51,7 @@ This configuration guide conciders that you already followed the [Create Environ
 
 ### Capacitor
 
-Add your environment information in the Capacitor plugin configuration<a href="#capacitorpluginconfiguration">Capacitor plugin configuration</a>.
+Add your environment information in the Capacitor plugin configuration <a href="#capacitorpluginconfiguration">Capacitor plugin configuration</a>.
 
 Example in `capacitor.config.ts`:
 
@@ -93,16 +93,17 @@ npx cap copy
 
 ### iOS
 
-Open up the Capacitor application’s iOS project in Xcode by running `npx cap open ios`.<br>
-Right-click the **App** group (under the App target) and select **New Group** from the context menu. Name this new group **environment**.
+Open up the Capacitor application’s iOS project in Xcode by running: `npx cap open ios`.
+
+Create a new **`environment`** group without folder (Right-click on the **`App`** group, under the App target, and select **New Group without Folder** from the context menu).
 
 In the Finder, open the `ios/App/App/environment` folder.<br>
-It contains all the copied configuration sorted into named folders.<br>
-For each of the `environment.json` files in this folder:
+It contains all the copied configuration files sorted into named folders.<br>
+For each of the `environment.json` files in these folders:
 
-- Drag & drop the file into the new created group **environment** in Xcode.
+- Drag & drop the JSON files from Finder into the new **`environment`** group in Xcode.
 - In the add to the project options (automatically displayed by Xcode):
-  - Uncheck the "Copy items if needed"
+  - Uncheck the **"Copy items if needed"**
   - Check **ONLY** the target that corresponds to the environment file
   - Press "Finish"
 
