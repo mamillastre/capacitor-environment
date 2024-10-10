@@ -8,7 +8,7 @@ const { resolve, dirname } = require('path');
 const c = require('../colors');
 const { getCapacitorParams, getAndroidPath, getIosPath } = require('../utils');
 
-exports.copyCommand = async function () {
+exports.copyCommand = function () {
   const { platform, appRootDir, config } = getCapacitorParams();
 
   if (!platform || !appRootDir || !config) {

@@ -7,9 +7,9 @@ const { program } = require('commander');
 program
   .command('copy')
   .description('Copy the environment configuration files into the native app')
-  .action(async () => {
-    const { copyCommand } = await require('./tasks/copy');
-    await copyCommand();
+  .action(() => {
+    const { copyCommand } = require('./tasks/copy');
+    copyCommand();
   });
 
 program.parse(process.argv);
