@@ -9,6 +9,8 @@ declare module '@capacitor/cli' {
       /**
        * The environment configuration declarations.
        * List all project available environments.
+       *
+       * @since 1.0.0
        */
       environments: EnvironmentConfigDeclarations;
     };
@@ -52,11 +54,13 @@ export interface EnvironmentConfigInfo {
 export interface EnvironmentPlugin {
   /**
    * Returns the environment configuration.
+   *
    * @usage
    * ```typescript
    * const env = await Environment.get();
    * console.log(env);
    * ```
+   * @since 1.0.0
    */
   get(options?: GetEnvironmentOptions): Promise<EnvironmentData>;
 
@@ -71,6 +75,7 @@ export interface EnvironmentPlugin {
    * ```typescript
    * Environment.init({version: '1.0.0'});
    * ```
+   * @since 1.0.0
    */
   setVersion(options: SetVersionOptions): Promise<void>;
 }
@@ -84,6 +89,8 @@ export interface GetEnvironmentOptions {
    * Allow to force the environment.json refresh when the file is cached by the browser.
    *
    * You can also call the "setVersion()" method to avoid to specify this parameter on each call.
+   *
+   * @since 1.0.0
    */
   version?: string | number;
 }
@@ -93,6 +100,8 @@ export interface SetVersionOptions {
    * The version number of the app.
    *
    * Provide this parameter to avoid to set this parameter on each "get()" call.
+   *
+   * @since 1.0.0
    */
   version: string | number;
 }
