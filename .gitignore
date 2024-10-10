@@ -34,6 +34,7 @@ android-template/app/app.iml
 .gradle/
 .settings/
 .project
+.npmrc
 
 # node files
 dist

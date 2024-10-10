@@ -84,6 +84,8 @@ jobs:
         run: |
           git config user.name "${{ env.RELEASE_USER_NAME }}"
           git config user.email "${{ env.RELEASE_USER_EMAIL }}"
+      - name: Npm config token
+        run: npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_TOKEN }}
       # Launch the release by determining the next version
       - name: Release
         if: ${{ inputs.increment == '' }}
