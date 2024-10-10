@@ -1,6 +1,6 @@
 {
   "name": "@mamillastre/capacitor-environment",
-  "version": "1.0.0",
+  "version": "6.1.0",
   "description": "Capacitor plugin to get JSON based environment specific data",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
