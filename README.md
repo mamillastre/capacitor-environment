@@ -129,6 +129,24 @@ declare module '@mamillastre/capacitor-environment' {
 }
 ```
 
+### Git
+
+This plugin creates the `environment.json` files in the native project folders. These files are generated during the Capacitor copy task and can be ignored by adding the following lines at the end of the `.gitignore` files:
+
+On `android/.gitignore`:
+
+```dockerfile
+# The web environment configuration. Generated during the copy
+app/src/*/assets/environment.json
+```
+
+On `ios/.gitignore`:
+
+```dockerfile
+# The web environment configuration. Generated during the copy
+App/App/environment/*/environment.json
+```
+
 ## Note for the Web
 
 An `environment.json` file must be available at the root your web application.<br>
