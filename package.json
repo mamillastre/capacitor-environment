@@ -57,7 +57,7 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "capacitor:copy:after": "bin/index.js copy"
+    "capacitor:copy:after": "node ./bin/index.js copy"
   },
   "dependencies": {
     "commander": "^12.0.0",
