@@ -1,5 +1,12 @@
 # Change Log
 
+## [6.1.1](https://github.com/mamillastre/capacitor-environment/compare/v6.1.0...v6.1.1) (2024-12-20)
+
+
+### Bug Fixes
+
+* **copy:** fix the capacitor copy hook on windows ([8025fee](https://github.com/mamillastre/capacitor-environment/commit/8025feeadbb8fb8d3b017d5f41eb0cade3e5a454))
+
 ## [6.1.0](https://github.com/mamillastre/capacitor-environment/compare/v1.0.0...v6.1.0) (2024-10-10)
 
 
