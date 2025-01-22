@@ -13,7 +13,7 @@ export class EnvironmentWeb extends WebPlugin implements EnvironmentPlugin {
     if (!EnvironmentWeb.envPromise) {
       EnvironmentWeb.envPromise = fetch(
         'environment.json' +
-          (options?.version ?? EnvironmentWeb.version ? `?v=${options?.version ?? EnvironmentWeb.version}` : ''),
+          ((options?.version ?? EnvironmentWeb.version) ? `?v=${options?.version ?? EnvironmentWeb.version}` : ''),
       ).then((res) => {
         if (res.status === 200) {
           return res.json();

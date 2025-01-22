@@ -199,6 +199,8 @@ Returns the environment configuration.
 
 **Returns:** <code>Promise&lt;<a href="#environmentdata">EnvironmentData</a>&gt;</code>
 
+**Since:** 1.0.0
+
 --------------------
 
 
@@ -218,6 +220,8 @@ Allow to force the environment.json refresh when the file is cached by the brows
 | ------------- | --------------------------------------------------------------- |
 | **`options`** | <code><a href="#setversionoptions">SetVersionOptions</a></code> |
 
+**Since:** 1.0.0
+
 --------------------
 
 
@@ -233,16 +237,16 @@ To enable the autocompletion, this interface must be extended.
 
 #### GetEnvironmentOptions
 
-| Prop          | Type                          | Description                                                                                                                                                                                                                       |
-| ------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`version`** | <code>string \| number</code> | The version number of the app. Only used on web. Allow to force the environment.json refresh when the file is cached by the browser. You can also call the "setVersion()" method to avoid to specify this parameter on each call. |
+| Prop          | Type                          | Description                                                                                                                                                                                                                       | Since |
+| ------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
+| **`version`** | <code>string \| number</code> | The version number of the app. Only used on web. Allow to force the environment.json refresh when the file is cached by the browser. You can also call the "setVersion()" method to avoid to specify this parameter on each call. | 1.0.0 |
 
 
 #### SetVersionOptions
 
-| Prop          | Type                          | Description                                                                                                |
-| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| **`version`** | <code>string \| number</code> | The version number of the app. Provide this parameter to avoid to set this parameter on each "get()" call. |
+| Prop          | Type                          | Description                                                                                                | Since |
+| ------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------- | ----- |
+| **`version`** | <code>string \| number</code> | The version number of the app. Provide this parameter to avoid to set this parameter on each "get()" call. | 1.0.0 |
 
 </docgen-api>
 
