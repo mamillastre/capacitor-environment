@@ -74,17 +74,6 @@ const config: CapacitorConfig = {
 export default config;
 ```
 
-> [!NOTE]
-> On project running **Capacitor < 6.1**, add this Capacitor hook, in your **package.json** scripts. It copy the environment configuration JSON files in the native platforms.
-> This hook is managed by the plugin on Capacitor 6.1 and above.
->
-> ```json
-> "scripts": {
->  ...,
->  "capacitor:copy:after": "npx capacitor-environment copy"
-> }
-> ```
-
 Run:
 
 ```bash
