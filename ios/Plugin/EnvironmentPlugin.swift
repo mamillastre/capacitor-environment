@@ -5,7 +5,12 @@ import Capacitor
  * Capacitor plugin to manage the environment configurations
  */
 @objc(EnvironmentPlugin)
-public class EnvironmentPlugin: CAPPlugin {
+public class EnvironmentPlugin: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "EnvironmentPlugin"
+    public let jsName = "Environment"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "get", returnType: CAPPluginReturnPromise)
+    ]
     private let implementation = Environment()
 
     @objc func get(_ call: CAPPluginCall) {

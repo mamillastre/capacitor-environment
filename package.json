@@ -16,7 +16,8 @@
     "bin/",
     "dist/",
     "ios/Plugin/",
-    "MamillastreCapacitorEnvironment.podspec"
+    "MamillastreCapacitorEnvironment.podspec",
+    "Package.swift"
   ],
   "author": "mamillastre",
   "license": "MIT",
@@ -56,6 +57,8 @@
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
+    "ios:pod:install": "cd ios && pod install --repo-update && cd ..",
+    "ios:spm:install": "cd ios && swift package resolve && cd ..",
     "prepublishOnly": "npm run build",
     "capacitor:copy:after": "node ./bin/index.js copy"
   },
