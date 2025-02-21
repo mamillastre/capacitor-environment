@@ -84,7 +84,7 @@ npx cap copy
 
 Open up the Capacitor application’s iOS project in Xcode by running: `npx cap open ios`.
 
-Create a new **`environment`** group without folder (Right-click on the **`App`** group, under the App target, and select **New Group without Folder** from the context menu).
+Create a new **`environment`** group without folder (Right-click on the **`App`** group, under the App target, and select **New Group without Folder** from the context menu. If not visible, hold the `Option` key to reveal the **New Group without Folder** command).
 
 In the Finder, open the `ios/App/App/environment` folder.<br>
 It contains all the copied configuration files sorted into named folders.<br>
@@ -92,7 +92,7 @@ For each of the `environment.json` files in these folders:
 
 - Drag & drop the JSON files from Finder into the new **`environment`** group in Xcode.
 - In the add to the project options (automatically displayed by Xcode):
-  - Uncheck the **"Copy items if needed"**
+  - Select the `Reference files in place` action
   - Check **ONLY** the target that corresponds to the environment file
   - Press "Finish"
 
