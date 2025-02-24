@@ -1,5 +1,13 @@
 # Change Log
 
+## [7.0.0](https://github.com/mamillastre/capacitor-environment/compare/v6.1.1...v7.0.0) (2025-02-24)
+
+
+### Features
+
+* **ios:** add SPM support ([324d52a](https://github.com/mamillastre/capacitor-environment/commit/324d52a5d33bfdac289d6952a0585e603ff14fbe))
+* migrate to Capacitor 7 ([dc2e8a9](https://github.com/mamillastre/capacitor-environment/commit/dc2e8a92d9fac9f9d64286dadda6428676e2a8f2))
+
 ## [6.1.1](https://github.com/mamillastre/capacitor-environment/compare/v6.1.0...v6.1.1) (2024-12-20)
 
 
