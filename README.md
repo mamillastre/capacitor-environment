@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2024?style=flat-square" />
+  <img src="https://img.shields.io/maintenance/yes/2025?style=flat-square" />
   <a href="https://github.com/mamillastre/capacitor-environment/actions?query=workflow%3A%22Release%22"><img src="https://img.shields.io/github/actions/workflow/status/mamillastre/capacitor-environment/release.yml?branch=main&style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@mamillastre/capacitor-environment"><img src="https://img.shields.io/npm/l/@mamillastre/capacitor-environment?style=flat-square" /></a>
 <br>
@@ -176,9 +176,9 @@ const printEnvironmentData = async () => {
 
 <docgen-index>
 
-* [`get(...)`](#get)
-* [`setVersion(...)`](#setversion)
-* [Interfaces](#interfaces)
+- [`get(...)`](#get)
+- [`setVersion(...)`](#setversion)
+- [Interfaces](#interfaces)
 
 </docgen-index>
 
@@ -201,8 +201,7 @@ Returns the environment configuration.
 
 **Since:** 1.0.0
 
---------------------
-
+---
 
 ### setVersion(...)
 
@@ -222,11 +221,9 @@ Allow to force the environment.json refresh when the file is cached by the brows
 
 **Since:** 1.0.0
 
---------------------
-
+---
 
 ### Interfaces
-
 
 #### EnvironmentData
 
@@ -234,13 +231,11 @@ The environment data as a JSON object.
 
 To enable the autocompletion, this interface must be extended.
 
-
 #### GetEnvironmentOptions
 
 | Prop          | Type                          | Description                                                                                                                                                                                                                       | Since |
 | ------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- |
 | **`version`** | <code>string \| number</code> | The version number of the app. Only used on web. Allow to force the environment.json refresh when the file is cached by the browser. You can also call the "setVersion()" method to avoid to specify this parameter on each call. | 1.0.0 |
-
 
 #### SetVersionOptions
 
