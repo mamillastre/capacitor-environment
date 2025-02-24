@@ -14,7 +14,7 @@ concurrency: release
 
 env:
   NODE_VERSION: 20
-  JAVA_VERSION: 17
+  JAVA_VERSION: 21
   RELEASE_USER_NAME: github-actions[bot]
   RELEASE_USER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
 
